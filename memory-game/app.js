@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDisplay = document.querySelector('#result')
     var cardsChosen = []
     var cardsChosenId = []
-    const cardWon = []
+    const cardsWon = []
     //create your board
     function createBoard() {
         for (let i = 0; i < cardArray.length; i++) {
@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('You found a match')
             cards[optionOneId].setAttribute('src', 'images/white.png')
             cards[optionTwoId].setAttribute('src', 'images/white.png')
-            cards[optionOneId].removeEventListener('click', flipcard)
-            cards[optionTwoId].removeEventListener('click', flipcard)
+            cards[optionOneId].removeEventListener('click', flipCard)
+            cards[optionTwoId].removeEventListener('click', flipCard)
             cardsWon.push(cardsChosen)
         }
         else {
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen = []
         cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
-        if (cardWon.length === cardArrray.length / 2) {
+        if (cardsWon.length === cardArray.length / 2) {
             resultDisplay.textContent = 'Congratulations! You found them all!'
         }
     }
@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
         cardsChosenId.push(cardId)
-        this.setAttribute
         this.setAttribute('src', cardArray[cardId].img)
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
